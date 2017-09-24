@@ -1,0 +1,50 @@
+{
+  "name": "react-render-order-fixer",
+  "version": "1.0.0",
+  "description": "This library allows your react component to be re-rendered where it is needed.",
+  "main": "lib/",
+  "types": "lib/",
+  "scripts": {
+    "dev": "reeasy -w example dev",
+    "build": "rimraf lib && tsc -d",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lonord/react-render-order-fixer.git"
+  },
+  "keywords": [
+    "react",
+    "render",
+    "order"
+  ],
+  "author": "Loy B. <lonord@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lonord/react-render-order-fixer/issues"
+  },
+  "homepage": "https://github.com/lonord/react-render-order-fixer#readme",
+  "devDependencies": {
+    "@types/debug": "0.0.30",
+    "@types/draft-js": "^0.10.12",
+    "@types/react": "^16.0.5",
+    "awesome-typescript-loader": "^3.2.3",
+    "css-loader": "^0.28.7",
+    "draft-js": "^0.10.1",
+    "draft-js-plugins-editor": "^2.0.0-beta1",
+    "draft-js-static-toolbar-plugin": "^2.0.0-rc4",
+    "normalize.css": "^7.0.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "reeasy": "^0.5.14",
+    "rimraf": "^2.6.2",
+    "style-loader": "^0.18.2",
+    "tslint": "^5.7.0",
+    "tslint-react": "^3.2.0",
+    "typescript": "^2.5.2",
+    "styled-components": "^2.1.2"
+  },
+  "dependencies": {
+    "debug": "^3.0.1"
+  }
+}
