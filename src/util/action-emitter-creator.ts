@@ -1,4 +1,10 @@
-export default function createActionTrigger() {
+export interface ActionEmitter {
+	addListener(fn: () => void)
+	removeListener(fn: () => void)
+	fireAction()
+}
+
+export default function createActionEmitter(): ActionEmitter {
 	const listeners = []
 	return {
 		addListener: (fn) => {

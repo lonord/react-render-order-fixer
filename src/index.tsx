@@ -1,13 +1,15 @@
 import debug from 'debug'
+import decorateComponentWithProps from 'decorate-component-with-props'
 import * as React from 'react'
 
-import createActionTrigger from './util/action-trigger'
+import ReRenderTrigger from './component/re-render-trigger'
+import createActionEmitter from './util/action-emitter-creator'
 
 const d = debug('react-render-order-fixer')
 
 export default function createRenderOrderFixer() {
 
-	const action = createActionTrigger()
+	const emitter = createActionEmitter()
 
 	function withOrderFixer<P = {}>(Comp: React.ComponentClass<P>): React.ComponentClass<P> {
 		return class ComponentWithOrderFixer extends React.Component<P> {
@@ -18,11 +20,11 @@ export default function createRenderOrderFixer() {
 			}
 
 			componentWillUnmount() {
-				action.removeListener(this.handleAction)
+				emitter.removeListener(this.handleAction)
 			}
 
 			componentDidMount() {
-				action.addListener(this.handleAction)
+				emitter.addListener(this.handleAction)
 			}
 
 			render() {
@@ -34,32 +36,12 @@ export default function createRenderOrderFixer() {
 		}
 	}
 
-	class ReRenderTrigger extends React.Component<any, any> {
-
-		handleUpdate = () => {
-			d('Triggered by TriggerComponent')
-			action.fireAction()
-		}
-
-		componentDidUpdate() {
-			this.handleUpdate()
-		}
-
-		componentDidMount() {
-			this.handleUpdate()
-		}
-
-		render() {
-			return null
-		}
-	}
-
 	return {
 		withOrderFixer,
-		ReRenderTrigger,
+		ReRenderTrigger: decorateComponentWithProps(ReRenderTrigger, { emitter }),
 		triggerAction: () => {
 			d('Triggered by triggerAction()')
-			action.fireAction()
+			emitter.fireAction()
 		}
 	}
 }

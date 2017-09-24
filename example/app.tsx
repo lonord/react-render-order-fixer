@@ -27,7 +27,7 @@ import createRenderOrderFixer from '../src/'
 declare var process
 process.env.NODE_ENV !== 'production' && debug.enable('*')
 
-const d = debug('react-render-order-fixer')
+const d = debug('react-render-order-fixer:example')
 
 // tslint:disable-next-line:no-unused-expression
 injectGlobal`
