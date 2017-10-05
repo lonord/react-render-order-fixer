@@ -29,6 +29,7 @@
     "@types/draft-js": "^0.10.12",
     "@types/react": "^16.0.5",
     "awesome-typescript-loader": "^3.2.3",
+    "babel-polyfill": "^6.26.0",
     "css-loader": "^0.28.7",
     "draft-js": "^0.10.1",
     "draft-js-plugins-editor": "^2.0.0-beta1",
@@ -39,10 +40,10 @@
     "reeasy": "^0.5.14",
     "rimraf": "^2.6.2",
     "style-loader": "^0.18.2",
+    "styled-components": "^2.1.2",
     "tslint": "^5.7.0",
     "tslint-react": "^3.2.0",
-    "typescript": "^2.5.2",
-    "styled-components": "^2.1.2"
+    "typescript": "^2.5.2"
   },
   "dependencies": {
     "debug": "^3.0.1",
