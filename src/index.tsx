@@ -27,7 +27,13 @@ export default function createRenderOrderFixer() {
 				emitter.addListener(this.handleAction)
 			}
 
+			// Only update <Comp/> when `this.forceUpdate()` called
+			shouldComponentUpdate() {
+				return false
+			}
+
 			render() {
+				d('Component %s rendered', Comp.displayName)
 				return (
 					<Comp {...this.props} />
 				)
