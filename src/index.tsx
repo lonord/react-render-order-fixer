@@ -7,8 +7,13 @@ import createActionEmitter from './util/action-emitter-creator'
 
 const d = debug('react-render-order-fixer')
 
-export default function createRenderOrderFixer() {
+export interface RenderOrderFixerOptions {
+	alwaysUpdate?: boolean
+}
 
+export default function createRenderOrderFixer(options: RenderOrderFixerOptions = {}) {
+
+	const { alwaysUpdate } = options
 	const emitter = createActionEmitter()
 
 	function withOrderFixer<P = {}>(Comp: React.ComponentClass<P>): React.ComponentClass<P> {
@@ -29,7 +34,7 @@ export default function createRenderOrderFixer() {
 
 			// Only update <Comp/> when `this.forceUpdate()` called
 			shouldComponentUpdate() {
-				return false
+				return !!alwaysUpdate
 			}
 
 			render() {

@@ -1,6 +1,6 @@
 {
   "name": "react-render-order-fixer",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "This library allows your react component to be re-rendered where it is needed.",
   "main": "lib/",
   "types": "lib/",

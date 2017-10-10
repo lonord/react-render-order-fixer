@@ -15,7 +15,7 @@ $ npm i react-render-order-fixer
 
 For example, the rendering of `Component1` relies on the results after `Component2`'s rendering, but `Component1` needs to be placed above `Component2` in the DOM structure:
 
-```
+```js
 <div>
 	<Component1/>
 	<Component2/>
@@ -26,7 +26,7 @@ For example, the rendering of `Component1` relies on the results after `Componen
 
 With this library:
 
-```
+```js
 import createRenderOrderFixer from 'react-render-order-fixer'
 const renderOrderFixer = createRenderOrderFixer()
 const Component1Fixed = renderOrderFixer.withOrderFixer(Component1)
@@ -39,9 +39,17 @@ const { ReRenderTrigger } = renderOrderFixer
 </div>
 ```
 
-Wrapping `Component1` with `withOrderFixer`, and when `ReRenderTrigger` to be rendered, `Component1Fixed` will be rendered again.
+Wrapping `Component1` with `withOrderFixer`, and only when `ReRenderTrigger` to be rendered, `Component1Fixed` will render.
 
 If you want to trigger re-render by a custom action, just call `renderOrderFixer.triggerAction()`.
+
+### Optional options
+
+```js
+const renderOrderFixer = createRenderOrderFixer({
+	alwaysUpdate: boolean  /* When alwaysUpdate is true, wrapped component will always update regardless of whether `ReRenderTrigger` is rendered or not. */
+})
+```
 
 ## License
 MIT
